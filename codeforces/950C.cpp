@@ -1,0 +1,81 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define fast ios_base::sync_with_stdio(0); cin.tie(NULL); cout.tie(NULL);
+#define endl '\n'
+#define fr(i,a,b) for(ll i=a; i<b; i++)
+#define fr1(i,a,b) for(ll i=a; i>=b; i--)
+#define ll long long int
+#define ld long double
+#define vi vector<ll>
+#define pb push_back
+#define all(v) (v).begin(),(v).end()
+#define mp(i,j) make_pair(i,j)
+#define fi first
+#define se second
+#define input(a,n) fr(i,0,n)cin>>a[i]
+#define output(a,n) fr(i,0,n)cout<<a[i]<<" "
+#define dbg cout<<"hurr"<<endl;
+#define dbg2 cout<<"hurr2"<<endl;
+#define md 1000000007
+#define N 200005
+#define sp << " " <<
+#define inf 100000000000000000
+#define pi 3.14159265358979323846
+#define fixd(x) cout << fixed << setprecision(x);
+
+int main()
+{
+	fast;
+    string s;
+    cin >> s;
+    ll n=s.size(),t=0;
+    vi v[n],p[2];
+    fr(i,0,n)
+    {
+    	if(s[i]=='0')
+    	{
+    		if(p[1].size()==0)
+    		{
+    			v[t].pb(i+1);
+    			p[0].pb(t);
+    			t++;
+    		}
+    		else
+    		{
+    			v[p[1].back()].pb(i+1);
+    			p[0].pb(p[1].back());
+    			p[1].pop_back();
+    		}
+    	}
+    	else
+    	{
+    		if(p[0].size()==0)
+    		{
+    			cout << -1;
+    			return 0;
+    		}
+    		else
+    		{
+    			v[p[0].back()].pb(i+1);
+    			p[1].pb(p[0].back());
+    			p[0].pop_back();
+    		}
+    	}
+    }
+    if(p[1].size()!=0)
+    {
+    	cout << -1;
+    	return 0;
+    }
+    cout << t << endl;
+    fr(i,0,n)
+    {
+    	if(v[i].size()!=0)
+    	{
+    		cout << v[i].size() << " ";
+    		fr(j,0,v[i].size())
+    			cout << v[i][j] << " ";
+    		cout << endl;
+    	}
+    }
+}
