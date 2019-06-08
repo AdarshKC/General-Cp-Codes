@@ -1,5 +1,13 @@
 /***            YES I know you you are reading this... Now just fuck off bcaz i finally started..!           ***/
 
+//Try with different test cases.
+//Think from another angle or opposite angle.
+//Recall all datastructures and algos.
+//See if Ques is compatible with any algo or not(steps used is similar to any algo or ds).
+//See if some pattern is forming (even with some exceptions).
+//Think by comparing with some real life situations.
+
+
 #include <bits/stdc++.h>
 using namespace std;
 #define fast ios_base::sync_with_stdio(0); cin.tie(NULL); cout.tie(NULL);
@@ -9,7 +17,10 @@ using namespace std;
 #define ll long long int
 #define ld long double
 #define vi vector<ll>
+#define vii vector <pair<ll,ll> >
+#define viii vector <pair<ll,pair<ll,ll> > >
 #define pb push_back
+#define all(v) (v).begin(),(v).end()
 #define mp(i,j) make_pair(i,j)
 #define fi first
 #define se second
@@ -18,9 +29,12 @@ using namespace std;
 #define dbg cout<<"hurr"<<endl;
 #define dbg2 cout<<"hurr2"<<endl;
 #define md 1000000007
+#define inf 999999999999999999
 #define sp << " " <<
 #define pi 3.14159265358979323846
 #define fixd(x) cout << fixed << setprecision(x);
+#define sz size()
+
 
 ll gcd(ll a, ll b) 
 { 
@@ -29,12 +43,17 @@ ll gcd(ll a, ll b)
     return gcd(b, a % b);   
 }
 
-ll f_str(string s)
-{ 
-    stringstream geek(s); 
-    ll x; 
-    geek >> x;
-    return x; 
+ll power(ll a,ll b)
+{
+    ll res = 1;
+    while (b > 0) 
+    {
+        if (b & 1)
+            res = res * a;
+        a=a*a;
+        b=b/2;
+    }
+    return res;
 }
 
 ll powmd(ll x,ll y, ll p)
@@ -60,45 +79,36 @@ string f_int(ll i)
 	return out;
 }
 
-ll max2(ll a,ll b)
-{
-	if(a>b)
-		return a;
-	return b;
+ll f_str(string s)
+{ 
+    stringstream geek(s); 
+    ll x; 
+    geek >> x;
+    return x; 
 }
 
-ll min2(ll a,ll b)
-{
-	if(a<b)
-		return a;
-	return b;
+bool sortbysec(const pair<ll,ll> &a,const pair<ll,ll> &b) 
+{ 
+    return (a.se < b.se); 
 }
 
-ll max3(ll a,ll b,ll c)
-{
-	return max2(a,max2(b,c));
-}
 
-ll min3(ll a,ll b,ll c)
-{
-	return min2(a,min2(b,c));	
-}
-
-ll power(ll a,ll b)
-{
-    ll res = 1;
-    while (b > 0) 
-    {
-        if (b & 1)
-            res = res * a;
-        a=a*a;
-        b=b/2;
-    }
-    return res;
+bool myCmp(Interval a, Interval b) {
+            return a.start < b.start;
 }
 
 int main() 
 {
 	fast;
 	
+	freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+	
+    fr(i,0,n)
+    {
+        fr(j,0,n)
+            cout << dp[i][j] << " ";
+        cout << endl;
+    }
+
 }
