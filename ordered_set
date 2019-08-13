@@ -1,0 +1,77 @@
+// Question : https://codeforces.com/gym/101908/problem/C
+
+#include <bits/stdc++.h>
+using namespace std;
+  
+// Header files, namespaces, 
+// macros as defined above 
+#include <ext/pb_ds/assoc_container.hpp> 
+#include <ext/pb_ds/tree_policy.hpp> 
+using namespace __gnu_pbds; 
+  
+ 
+#define fast ios_base::sync_with_stdio(0); cin.tie(NULL); cout.tie(NULL);
+#define endl '\n'
+#define fr(i,a,b) for(ll i=a; i<b; i++)
+#define fr1(i,a,b) for(ll i=a; i>=b; i--)
+#define ll long long int
+#define ld long double
+#define vi vector<ll>
+#define vii vector <pair<ll,ll> >
+#define viii vector <pair<ll,pair<ll,ll> > >
+#define pb push_back
+#define all(v) (v).begin(),(v).end()
+#define mp(i,j) make_pair(i,j)
+#define fi first
+#define se second
+#define input(a,n) fr(i,0,n)cin>>a[i]
+#define output(a,n) fr(i,0,n)cout<<a[i]<<" "
+#define dbg cout<<"hurr"<<endl;
+#define dbg2 cout<<"hurr2"<<endl;
+#define md 1000000007
+#define inf 999999999999999999
+#define sp << " " <<
+#define pi 3.14159265358979323846
+#define fixd(x) cout << fixed << setprecision(x);
+#define sz size()
+
+#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+
+int main()
+{
+    fast;
+    ll n,m;
+    cin >> n >> m;
+    ll a,b,x,y;
+    cin >> a >> b;
+    vii h,v;
+    fr(i,0,a)
+    {
+        cin >> x >> y;
+        h.pb(mp(x,y));
+    }
+    fr(j,0,b)
+    {
+        cin >> x >> y;
+        v.pb(mp(x,y));
+    }
+    sort(all(h));
+    sort(all(v));
+    ordered_set s;
+    x=1;
+    fr(i,0,a)
+    {
+        s.insert(h[i].se);
+        //cout << s.order_of_key(h[i].se) << " ";
+        x+=(s.sz)-s.order_of_key(h[i].se);
+    }
+    s.clear();
+    fr(i,0,b)
+    {
+        //cout << s.order_of_key(v[i].se) << " ";
+        s.insert(v[i].se);
+        //cout << s.order_of_key(v[i].se) << " ";
+        x+=(s.sz)-s.order_of_key(v[i].se)+a;
+    }
+    cout << x;
+}
