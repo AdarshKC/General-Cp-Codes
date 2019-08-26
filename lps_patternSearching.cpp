@@ -50,10 +50,36 @@ vi lps(string s)
     return v;
 }
 
+void fin(vi v,string str, string pat)
+{
+	ll i=0,j=0,n=str.size(),m=pat.size();
+	while(i<n)
+	{
+		if(str[i]==pat[j])
+		{
+			i++;
+			j++;
+		}
+		if(j==m)
+		{
+			cout << i-j << ", ";
+			j=v[j-1];
+		}
+		else if(i<n && str[i]!=pat[j])
+		{
+			if(j!=0)
+				j=v[j-1];
+			else
+				i++;
+		}
+	}
+}
+
 int main() 
 { 
-    string str;
-    cin >> str;
-    vi v=lps(str);
-    output(v,v.size());
-} 
+    string str, pat;
+    cin >> str >> pat;
+    vi v=lps(pat);
+    cout << "Found at: ";
+    fin(v,str,pat);
+}
