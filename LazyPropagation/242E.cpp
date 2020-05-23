@@ -3,7 +3,7 @@ using namespace std;
 #define fast ios_base::sync_with_stdio(0); cin.tie(NULL); cout.tie(NULL);
 #define endl '\n'
 #define fr(i,a,b) for(ll i=a; i<b; i++)
-#define ll int
+#define ll long long int
 #define maxn 100010
 #define bit_ 25
 
